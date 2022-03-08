@@ -86,5 +86,17 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+
+            var course = await _dbContext.Courses.Where(x => x.IsDeleted == false && x.Id == id).FirstOrDefaultAsync();
+            if (course == null)
+                return NotFound();
+
+            return View(course);
+        }
+
     }
 }

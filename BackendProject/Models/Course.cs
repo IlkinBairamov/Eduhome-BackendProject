@@ -11,7 +11,6 @@ namespace BackendProject.Models
     public class Course
     {
         public int Id { get; set; }
-        [Required]
         public string Image { get; set; }
         [Required]
         public string Name { get; set; }
@@ -27,7 +26,6 @@ namespace BackendProject.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         [NotMapped]
-        [Required]
         public IFormFile Photo { get; set; }
     }
 }

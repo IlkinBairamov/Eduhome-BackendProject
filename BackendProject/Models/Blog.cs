@@ -23,7 +23,6 @@ namespace BackendProject.Models
         public Category Category { get; set; }
         public bool IsDeleted { get; set; } 
         [NotMapped]
-        [Required]
         public IFormFile Photo { get; set; }
 
     }

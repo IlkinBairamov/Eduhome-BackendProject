@@ -49,7 +49,12 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             }
             if (blog == null)
                 return BadRequest();
-            
+
+            if (blog.Photo == null)
+            {
+                ModelState.AddModelError("Photo", "Please choose photo");
+            }
+
             var isExsistBlog = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).AnyAsync(x => x.Name.ToLower() == blog.Name.ToLower());    
             if (isExsistBlog)
             {
@@ -161,18 +166,21 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             .Where(x => x.IsDeleted == false).ToListAsync();
             ViewBag.Categories = Categories;
 
+
             if (id == null)
                 return NotFound();
 
             if (id != blog.Id)
                 return BadRequest();
 
-            if (!ModelState.IsValid)
-                return View();
+           
 
             var existblog = await _dbContext.Blogs.Where(x => x.IsDeleted == false && x.Id == id).FirstOrDefaultAsync();
             if (existblog == null)
                 return NotFound();
+
+            if (!ModelState.IsValid)
+                return View(existblog);
 
             if (blog.Photo != null)
             {
@@ -206,7 +214,10 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 return View();
             }
             existblog.CategoryId = categoryId;
-            existblog = blog;
+            existblog.Title = blog.Title;
+            existblog.Name = blog.Name;
+            existblog.Description = blog.Description;
+
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

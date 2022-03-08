@@ -1,4 +1,4 @@
-﻿@model List<Blog>
+﻿@model List<Course>
 @{
     ViewData["Title"] = "Index";
 }
@@ -20,20 +20,20 @@
                         {
                             <tr>
 
-                                <td><img src="~/img/blog/@item.Image" style="width:100px; height:100px" /></td>
+                                <td><img src="~/img/course/@item.Image" style="width:100px; height:100px" /></td>
                                 <td>@item.Name</td>
 
                                 <td>
-                                    <a class="btn btn-warning" asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-success" asp-controller="Blog" asp-action="Detail" asp-route-id="@item.Id">Details</a>
-                                    <a class="btn btn-danger" asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    <a class="btn btn-warning" asp-controller="Course" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-success" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                                    <a class="btn btn-danger" asp-controller="Course" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
 
-                <a class="btn btn-warning mt-3" asp-controller="Blog" asp-action="Create">Create Blog</a>
+                <a class="btn btn-warning mt-3" asp-controller="Course" asp-action="Create">Create Course</a>
 
             </div>
         </div>

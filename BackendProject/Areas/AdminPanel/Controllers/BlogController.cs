@@ -35,9 +35,9 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             ViewBag.ParentCategories = Categories;
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Create(Blog blog,int CategoryId)
         {
             var Categories = await _dbContext.Categories
@@ -50,28 +50,28 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (blog == null)
                 return BadRequest();
             
-            var isExsistCategory = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).AnyAsync(x => x.Name.ToLower() == blog.Name.ToLower());    
-            if (isExsistCategory)
+            var isExsistBlog = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).AnyAsync(x => x.Name.ToLower() == blog.Name.ToLower());    
+            if (isExsistBlog)
             {
-                ModelState.AddModelError("Name", "This Category Already Exsist");
+                ModelState.AddModelError("Name", "This blog Already Exsist");
                 return View();
             }
 
             if (blog.Photo == null)
             {
-                ModelState.AddModelError("", "Shekil sechin.");
+                ModelState.AddModelError("", "Please choose photo");
                 return View();
             }
 
             if (!blog.Photo.isImage())
             {
-                ModelState.AddModelError("", "Duzgun shekil formati sechin.");
+                ModelState.AddModelError("", "Please choose correct image type");
                 return View();
             }
 
             if (!blog.Photo.IsAllowedSize(1))
             {
-                ModelState.AddModelError("", "1Mb-dan artiq ola bilmez.");
+                ModelState.AddModelError("", "it cant be more than 1mb");
                 return View();
             }
 

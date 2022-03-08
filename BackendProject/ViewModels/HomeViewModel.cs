@@ -17,6 +17,8 @@ namespace BackendProject.ViewModels
         public List<Course> Courses { get; set; }   
         public CourseTitle CourseTitle { get; set; }
         public List<Event> Events { get; set; }
+        public List<Blog> Blogs { get; set; }
+
             
 
     }

@@ -21,6 +21,7 @@ namespace BackendProject.Models
         public string HowToApply { get; set; }
         [Required]
         public string Certification { get; set; }
+        public bool IsDeleted { get; set; } 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }

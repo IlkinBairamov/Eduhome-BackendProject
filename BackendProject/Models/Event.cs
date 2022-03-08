@@ -15,7 +15,10 @@ namespace BackendProject.Models
         public string Time { get; set; }
         public string Description { get; set; }
         public DateTimeOffset Created { get; set; } = DateTime.UtcNow;
+        public bool IsDeleted { get; set; } 
         public ICollection<EventTeacher> EventTeachers { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }  
 
     }
 }

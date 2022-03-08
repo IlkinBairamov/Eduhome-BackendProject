@@ -1,0 +1,24 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="col-lg-6">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <img src="~/img/blog/@Model.Image" style="width:100px; height:100px;" class="mb-3" />
+                    <p class="fs-17 font-weight-600 mb-3"> Name: @Model.Name</p>
+                    <h3 class="fs-17 font-weight-600 mb-3"> Title: @Model.Title</h3>
+                    <p class="fs-17 font-weight-600 mb-3"> Create Time: @String.Format("{0:MM/dd/yyyy}", Model.Created) </p>
+                    <p class="fs-17 font-weight-600 mb-3">Description: @Model.Description</p>
+                    <p>Category: @Model.Category.Name</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <a asp-action="Index" class="btn btn-danger">Cancel</a>
+</div>
+

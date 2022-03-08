@@ -33,6 +33,7 @@ namespace BackendProject.Controllers
             var course = await _dbContext.Courses.Take(3).ToListAsync();
             var courseTitle = await _dbContext.CourseTitles.SingleOrDefaultAsync();
             var events = await _dbContext.Events.Take(4).ToListAsync();
+            var blogs = await _dbContext.Blogs.Take(3).ToListAsync();
 
             return View(new HomeViewModel
             {
@@ -44,8 +45,8 @@ namespace BackendProject.Controllers
                 Subscribe=subscribe,
                 Courses=course,
                 CourseTitle=courseTitle,
-                Events=events
-                
+                Events=events,
+                Blogs=blogs
             });
         }
 

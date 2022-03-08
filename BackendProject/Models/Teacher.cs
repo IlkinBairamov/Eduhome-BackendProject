@@ -67,6 +67,7 @@ namespace BackendProject.Models
 
         [Required]
         public int Communication { get; set; }
+        public bool IsDeleted { get; set; } 
 
         public ICollection<EventTeacher> EventTeachers { get; set; }
             

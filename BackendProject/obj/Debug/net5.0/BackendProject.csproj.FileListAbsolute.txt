@@ -179,3 +179,6 @@ C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Update.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Index.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Create.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Deletee.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Update.cshtml.g.cs

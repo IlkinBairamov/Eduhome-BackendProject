@@ -15,6 +15,7 @@ namespace BackendProject.ViewModels
         public List<Category> Categories { get; set; }
       
         public List<int> TeacherId { get; set; }
+        public List<EventTeacher> SelectedTeacher { get; set; }
         public IFormFile Photo { get; set; }
 
     }

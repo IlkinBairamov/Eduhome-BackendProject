@@ -1,0 +1,27 @@
+﻿@model Event
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="col-lg-6">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <img src="~/img/event/@Model.Image" alt="Alternate Text" />
+                    <h2 class="fs-17 font-weight-600 mb-1">Title:</h2>@Model.Title
+                    <p class="fs-17 font-weight-600 mb-1">Time:</p>@Model.Time
+                    <p class="fs-17 font-weight-600 mb-1">Location:</p>@Model.Location
+                    <p class="fs-17 font-weight-600 mb-1">Description:</p>@Model.Description
+                    <p class="fs-17 font-weight-600 mb-1">Created:</p>@String.Format("{0:MM/dd/yyyy}", Model.Created)
+                    <h6 class="fs-17 font-weight-600 mb-1">Category:</h6>@Model.Category.Name
+                    <h6 class="fs-17 font-weight-600 mb-1">Teacher:</h6>@Model.EventTeachers.FirstOrDefault().Teacher.Fullanme
+                </div>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-danger">Cancel</a>
+</div>
+
+

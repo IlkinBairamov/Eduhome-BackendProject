@@ -1,0 +1,40 @@
+﻿
+@model List<Teacher>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-lg-12">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><img src="~/img/teacher/@item.Image" style="width:100px; height:100px" /></td>
+                                <td>@item.Fullanme</td>
+                                <td>@item.Position</td>
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="Teacher" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                    <a class="btn btn-success" asp-controller="Teacher" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                                    <a class="btn btn-danger" asp-controller="Teacher" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a class="btn btn-warning mt-3" asp-controller="Teacher" asp-action="Create">Create Teacher</a>
+            </div>
+        </div>
+    </div>
+</div>

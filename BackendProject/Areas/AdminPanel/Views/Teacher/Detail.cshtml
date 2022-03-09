@@ -1,0 +1,36 @@
+﻿
+
+@model Teacher
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="col-lg-6">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                <img src="~/img/teacher/@Model.Image" alt="Alternate Text" class="mb-3"/>
+                <h2 class="fs-17 font-weight-600 mb-1">Fullanme:</h2>@Model.Fullanme
+                <p class="fs-17 font-weight-600 mb-1">Position:</p>@Model.Position
+                <p class="fs-17 font-weight-600 mb-1">AboutMe:</p>@Model.AboutMe
+                <p class="fs-17 font-weight-600 mb-1">Degree:</p>@Model.Degree
+                <p class="fs-17 font-weight-600 mb-1">EXPERIENCE:</p>@Model.EXPERIENCE
+                <h6 class="fs-17 font-weight-600 mb-1">HOBBIES:</h6>@Model.HOBBIES
+                <h6 class="fs-17 font-weight-600 mb-1">FACULTY:</h6>@Model.FACULTY
+                <h6 class="fs-17 font-weight-600 mb-1">Mail:</h6>@Model.Mail
+                <h6 class="fs-17 font-weight-600 mb-1">Phone:</h6>@Model.Phone
+                <h6 class="fs-17 font-weight-600 mb-1">Skype:</h6>@Model.Skype
+                <h6 class="fs-17 font-weight-600 mb-1">TeamLeader:</h6>@Model.TeamLeader
+                <h6 class="fs-17 font-weight-600 mb-1">Language:</h6>@Model.Language
+                <h6 class="fs-17 font-weight-600 mb-1">Design:</h6>@Model.Design
+                <h6 class="fs-17 font-weight-600 mb-1">Development:</h6>@Model.Development
+                <h6 class="fs-17 font-weight-600 mb-1">Innovation:</h6>@Model.Innovation
+                <h6 class="fs-17 font-weight-600 mb-1">Communication:</h6>@Model.Communication
+                </div>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-danger">Cancel</a>
+</div>
+

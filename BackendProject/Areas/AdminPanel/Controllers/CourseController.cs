@@ -122,7 +122,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 System.IO.File.Delete(pathDelete);
             }
 
-            _dbContext.Courses.Remove(course);
+            course.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

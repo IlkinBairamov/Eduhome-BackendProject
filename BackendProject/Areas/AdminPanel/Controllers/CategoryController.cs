@@ -139,7 +139,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             if (category == null)
                 return NotFound();
 
-            _dbContext.Categories.Remove(category);
+            category.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

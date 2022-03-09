@@ -172,3 +172,9 @@ C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Course\Delete.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Course\Update.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Course\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Index.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Create.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Delete.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Update.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Index.cshtml.g.cs

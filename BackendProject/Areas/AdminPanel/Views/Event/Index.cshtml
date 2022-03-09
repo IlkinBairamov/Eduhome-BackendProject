@@ -1,6 +1,4 @@
-﻿
-
-@model List<Event>
+﻿@model List<Event>
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,6 +12,7 @@
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Teacher</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -21,8 +20,10 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td><img src="~/img/teacher/@item.Image" style="width:100px; height:100px" /></td>
+                                <td><img src="~/img/event/@item.Image" style="width:100px; height:100px" /></td>
                                 <td>@item.Title</td>
+                                <td>@item.EventTeachers.FirstOrDefault().Teacher.Fullanme</td>
+                             
                             
                                 <td>
                                     <a class="btn btn-warning" asp-controller="Event" asp-action="Update" asp-route-id="@item.Id">Update</a>

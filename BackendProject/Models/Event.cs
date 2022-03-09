@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace BackendProject.Models
         public bool IsDeleted { get; set; } 
         public ICollection<EventTeacher> EventTeachers { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }  
-
+        public Category Category { get; set; }
+       
     }
 }

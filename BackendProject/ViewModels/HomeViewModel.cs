@@ -19,7 +19,5 @@ namespace BackendProject.ViewModels
         public List<Event> Events { get; set; }
         public List<Blog> Blogs { get; set; }
 
-            
-
     }
 }

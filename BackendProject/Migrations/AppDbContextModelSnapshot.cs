@@ -358,6 +358,21 @@ namespace BackendProject.Migrations
                     b.ToTable("subscribes");
                 });
 
+            modelBuilder.Entity("BackendProject.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("BackendProject.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")

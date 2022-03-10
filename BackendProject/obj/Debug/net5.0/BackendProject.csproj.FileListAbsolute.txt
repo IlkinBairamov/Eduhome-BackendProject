@@ -182,3 +182,16 @@ C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Detail.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Deletee.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Update.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Bunner\Default.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Sidebar\Default.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Course\Index.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Course\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Teacher\Index.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Teacher\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Blog\Detail.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\Components\Subscribe\Default.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Blog\SelectCategory.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Course\SelectCategory.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Event\Index.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Event\Detail.cshtml.g.cs

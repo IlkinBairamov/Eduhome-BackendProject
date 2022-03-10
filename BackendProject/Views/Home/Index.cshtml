@@ -1,4 +1,14 @@
-﻿@{
+﻿@if (TempData["confirm"] != null)
+{
+    <input type="hidden" id="confirmJs" />
+}
+
+@if (TempData["confirmed"] != null)
+{
+    <input type="hidden" id="confirmedJs" />
+}
+
+@{
     HomeViewModel homeViewModel = Model;
     List<Slider> sliders = homeViewModel.Sliders;
     About about = homeViewModel.About;
@@ -42,7 +52,6 @@
     </div>
 </section>
 <!-- Background Area End -->
-
 <!-- Service Start -->
 <div class="service-area two pt-150 pb-150">
     <div class="container">
@@ -69,14 +78,13 @@
     </div>
 </div>
 <!-- Service End -->
-
 <!-- About Start -->
 <div class="about-area pb-155">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="about-content">
-                   @Html.Raw(about.Title)
+                    @Html.Raw(about.Title)
                     <p>@about.Subtitle</p>
                     <p class="hidden-sm">@about.Subtitle2</p>
                     <a class="default-btn" href="about.html">view courses</a>
@@ -118,7 +126,7 @@
                         <div class="course-content">
                             <h3><a href="course-details.html">@course.Name</a></h3>
                             <div class="mb-20" style="height:72px ; overflow:hidden">  <p>@course.Text</p>  </div>
-                           
+
                             <a class="default-btn" href="course-details.html">read more</a>
                         </div>
                     </div>
@@ -269,7 +277,7 @@
                     </div>
                 }
             </div>
-        
+
         </div>
     </div>
 </div>
@@ -277,3 +285,55 @@
 <!-- Subscribe Start -->
 @await Component.InvokeAsync("Subscribe");
 <!-- Subscribe End -->
+
+@section Scriptss{
+    <script>
+        $(document).ready(function () {
+            if ($("#confirmJs").length) {
+
+                Command: toastr["success"]("please verify account by email")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+            if ($("#confirmedJs").length) {
+
+                Command: toastr["success"]("email confirmed successfully")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+        })
+
+    </script>
+}

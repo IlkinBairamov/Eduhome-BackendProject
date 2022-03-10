@@ -31,7 +31,6 @@ namespace BackendProject.Controllers
             return View(existEvent);
         }
 
-
         public async Task<IActionResult> SelectCategory(int? id)
         {
             var events = await _dbContext.Events.Where(x => x.CategoryId == id).ToListAsync();

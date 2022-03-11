@@ -1,5 +1,6 @@
 ﻿using BackendProject.Models;
 using BackendProject.ViewModels;
+using FrontToBack.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -56,6 +57,7 @@ namespace BackendProject.Controllers
                 }
                 return View();
             }
+            await _userManager.AddToRoleAsync(user, RoleConstants.UserRole);
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
@@ -70,6 +72,7 @@ namespace BackendProject.Controllers
                 body = reader.ReadToEnd();
             }
             msg.Body = body.Replace("{{link}}", link);
+            msg.Body = body.Replace("{{name}}", user.Fullname);
             msg.Subject = "Verify";
             msg.IsBodyHtml = true;
 
@@ -81,6 +84,7 @@ namespace BackendProject.Controllers
             smtp.Send(msg);
             TempData["confirm"] = true;
 
+         
             await _signInManager.SignInAsync(user, false);
 
             return RedirectToAction(nameof(Index), "Home");
@@ -143,5 +147,89 @@ namespace BackendProject.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Index), "Home");
         }
+
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ForgetPassword(AccountViewModel account)
+        {
+            var user = await _userManager.FindByEmailAsync(account.user.Email);
+
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            string link = Url.Action(nameof(ResetPassword), "Account", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());
+
+
+            MailMessage msg = new MailMessage();
+            msg.From = new MailAddress("codep320@gmail.com", "Eduhome");
+            msg.To.Add(user.Email);
+
+
+            msg.Body = $"<a href=\"{link}\">Please click here for reset password</a>";
+            msg.Subject = "ResetPassword";
+            msg.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("codep320@gmail.com", "codeacademyp320");
+            smtp.Send(msg);
+
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        public async Task<IActionResult> ResetPassword(string Email, string token)
+        {
+            var user = await _userManager.FindByEmailAsync(Email);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var account = new AccountViewModel()
+            {
+                Token = token,
+                user = user
+            };
+            return View(account);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> ResetPassword(AccountViewModel account)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(account);
+            }
+            var user = await _userManager.FindByEmailAsync(account.user.Email);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, account.Token, account.Password);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View();
+            }
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
     }
 }

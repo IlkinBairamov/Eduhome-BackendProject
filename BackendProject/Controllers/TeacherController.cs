@@ -30,5 +30,14 @@ namespace BackendProject.Controllers
             var teachers = await _dbContext.Teachers.Where(x => x.IsDeleted == false).FirstOrDefaultAsync();
             return View(teachers);
         }
+
+        public async Task<IActionResult> Search(string searched)
+        {
+            var teachers = await _dbContext.Teachers
+                .Where(x => x.IsDeleted == false && x.Fullanme.ToLower().Trim().Contains(searched.ToLower().Trim()))
+                .ToListAsync();
+
+            return PartialView("_SearchedTeacherPartial", teachers);
+        }
     }
 }

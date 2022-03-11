@@ -1,3 +1,26 @@
+$(document).ready(function () {
+    var controller = $("#controller").val();
+    var searched;
+    $(document).on('keyup', '#input-search', function () {
+        $("#new").empty()
+        searched = $(this).val();
+        if (searched.length > 0) {
+            $.ajax({
+                type: "GET",
+                url: `/${controller}/Search?searched=` + searched,
+                success: function (res) {
+                    $("#old").css("display","none")
+                    $("#new").append(res);
+                }
+            })
+        }
+        else {
+            $("#old").css("display", "block")
+        }
+     
+    })
+});
+
 (function ($) {
 "use strict";  
     

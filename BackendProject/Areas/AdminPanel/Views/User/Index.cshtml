@@ -1,0 +1,63 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card mb-4">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">IsDeleted</th>
+                        <th scope="col">Setting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Fullname</td>
+                            <td>@user.Username</td>
+                            <td>@user.Email</td>
+                            <td>@user.Role</td>
+                            @if (!user.Isdeleted)
+                            {
+                                <td class="text-success">
+                                    active
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-danger">
+                                    Deactive
+                                </td>
+                            }
+                            <td>
+
+                                @if (user.Username != User.Identity.Name)
+                                {
+                                    @if (!user.Isdeleted)
+                                    {
+                                        <a class="btn btn-danger" asp-action="Activated" asp-route-id="@user.Id">Deactivated</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success" asp-action="Activated" asp-route-id="@user.Id">Activated</a>
+                                    }
+                                    <a class="btn btn-danger" asp-action="ChangeRole" asp-route-id="@user.Id">ChangeRole</a>
+                                    <a class="btn btn-warning" asp-action="ChangePassword" asp-route-id="@user.Id">ChangePassword</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

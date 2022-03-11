@@ -20,6 +20,8 @@
     <link href="~/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!--Start Your Custom Style Now-->
     <link href="~/Admin/assets/dist/css/style.css" rel="stylesheet">
+
+    @await RenderSectionAsync("Styles", false)
 </head>
 <body class="fixed">
     <!-- Page Loader -->
@@ -102,8 +104,7 @@
                             </a>
                             <ul class="nav-second-level">
                                 <li><a asp-controller="User" asp-action="Index">User List</a></li>
-                                <li><a href="mailbox_details.html">Mailbox Details</a></li>
-                                <li><a href="compose.html">Compose</a></li>
+                               
                             </ul>
                         </li>
                         <li>
@@ -423,8 +424,10 @@
     <script src="~/Admin/assets/dist/js/pages/dashboard.js"></script>
     <!--Page Scripts(used by all page)-->
     <script src="/Admin/assets/dist/js/sidebar.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @await RenderSectionAsync("Scripts",false)
+   
+    
 </body>
 
 <!-- Mirrored from bhulua.thememinister.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Oct 2019 13:07:41 GMT -->

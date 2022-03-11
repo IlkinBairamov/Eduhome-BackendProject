@@ -36,5 +36,14 @@ namespace BackendProject.Controllers
             var events = await _dbContext.Events.Where(x => x.CategoryId == id).ToListAsync();
             return View(events);
         }
+
+        public async Task<IActionResult> Search(string searched)
+        {
+            var events = await _dbContext.Events
+                .Where(x => x.IsDeleted == false && x.Title.ToLower().Trim().Contains(searched.ToLower().Trim()))
+                .ToListAsync();
+
+            return PartialView("_SearchedEventPartial", events);
+        }
     }
 }

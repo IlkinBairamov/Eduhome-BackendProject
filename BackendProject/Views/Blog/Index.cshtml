@@ -1,6 +1,7 @@
 ﻿@model List<Blog>
 @{
     ViewData["Title"] = "Index";
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
 }
 
 <!-- Banner Area Start -->
@@ -21,9 +22,23 @@
 </div>
 <!-- Banner Area End -->
 <!-- Blog Start -->
-<div class="blog-area pt-150 pb-150">
+<div class="blog-area pt-50 pb-150">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search courses</h3>
+                </div>
+                <div class="course-form">
+                    <form id="search" action="#">
+                        <input id="input-search" type="search" placeholder="Search..." name="search" />
+                        <input type="hidden" name="name" value="@controller" id="controller" />
+                        <button type="submit">search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="old">
             @foreach (var item in Model)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -46,6 +61,9 @@
                     </div>
                 </div>
             }
+        </div>
+        <div class="row" id="new">
+
         </div>
         <div class="row">
             <div class="col-xs-12">

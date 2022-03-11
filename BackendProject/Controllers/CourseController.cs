@@ -36,5 +36,14 @@ namespace BackendProject.Controllers
             var courses = await _dbContext.Courses.Where(x => x.CategoryId == id).ToListAsync();
             return View(courses);
         }
+
+        public async Task<IActionResult> Search(string searched)
+        {
+            var courses = await _dbContext.Courses
+                .Where(x => x.IsDeleted==false && x.Name.ToLower().Trim().Contains(searched.ToLower().Trim()))
+                .ToListAsync();
+
+            return PartialView("_SearchedCoursePartial", courses);
+        }   
     }
 }

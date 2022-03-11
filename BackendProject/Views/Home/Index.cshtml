@@ -255,9 +255,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                @foreach (var item in blogs)
-                {
+            
+            @foreach (var item in blogs)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-blog">
                         <div class="blog-img">
                             <a href="blog-details.html"><img src="~/img/blog/@item.Image" alt="blog"></a>
@@ -275,8 +276,8 @@
                             </div>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
 
         </div>
     </div>
@@ -287,12 +288,11 @@
 <!-- Subscribe End -->
 
 @section Scriptss{
+
     <script>
         $(document).ready(function () {
             if ($("#confirmJs").length) {
-
                 Command: toastr["success"]("please verify account by email")
-
                 toastr.options = {
                     "closeButton": false,
                     "debug": false,

@@ -174,9 +174,17 @@ namespace BackendProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Courses");
                 });
@@ -544,9 +552,6 @@ namespace BackendProject.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Subscribe")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -717,7 +722,13 @@ namespace BackendProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BackendProject.Models.User", "User")
+                        .WithMany("Courses")
+                        .HasForeignKey("UserId1");
+
                     b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BackendProject.Models.Event", b =>
@@ -818,6 +829,11 @@ namespace BackendProject.Migrations
             modelBuilder.Entity("BackendProject.Models.Teacher", b =>
                 {
                     b.Navigation("EventTeachers");
+                });
+
+            modelBuilder.Entity("BackendProject.Models.User", b =>
+                {
+                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

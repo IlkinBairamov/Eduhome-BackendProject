@@ -27,5 +27,8 @@ namespace BackendProject.Models
         public Category Category { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

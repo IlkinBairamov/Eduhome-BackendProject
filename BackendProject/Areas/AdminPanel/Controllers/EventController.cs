@@ -3,6 +3,8 @@ using BackendProject.Areas.AdminPanel.Data.NewFolder;
 using BackendProject.DataAccessLayer;
 using BackendProject.Models;
 using BackendProject.ViewModels;
+using FrontToBack.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +16,7 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
+    [Authorize(Roles = RoleConstants.AdminRole)]
     public class EventController : Controller
     {
         private readonly AppDbContext _dbContext;

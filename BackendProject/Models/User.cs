@@ -12,6 +12,7 @@ namespace BackendProject.Models
         [Required]
         public string Fullname { get; set; }
         public bool Isdeleted { get; set; }
+        public bool Subscribe { get; set; }
         public ICollection<Course> Courses { get; set; }
     }
 }

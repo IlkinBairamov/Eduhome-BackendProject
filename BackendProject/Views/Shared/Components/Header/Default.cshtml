@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="logo">
-                        <a href="index.html"><img src="~/img/logo/@Model.Logo" alt="eduhome" /></a>
+                        <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/@Model.Logo" alt="eduhome" /></a>
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-6">
@@ -45,7 +45,6 @@
                                     <li>
                                         <a asp-controller="Home" asp-action="Index">Home</a>
                                     </li>
-                                    <li><a asp-controller="About" asp-action="Index">About</a></li>
                                     <li>
                                         <a  asp-controller="Course" asp-action="Index">courses</a>
                                       
@@ -76,9 +75,7 @@
                                 <div class="search-form">
                                     <form id="search-form" action="#">
                                         <input id="input-search" type="search" placeholder="Search here..." name="search" />
-                                        <div id="new" style="background-color:white; width:231px; overflow:hidden">
-
-                                        </div>
+                                        <div id="new" style="background-color:white; width:231px; overflow:hidden"></div>
                                         <button type="submit">
                                             <span><i class="fa fa-search"></i></span>
                                         </button>

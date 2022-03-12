@@ -255,7 +255,7 @@
             </div>
         </div>
         <div class="row">
-            
+
             @foreach (var item in blogs)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -284,7 +284,11 @@
 </div>
 <!-- Blog Area End -->
 <!-- Subscribe Start -->
-@await Component.InvokeAsync("Subscribe");
+@if (User.Identity.IsAuthenticated)
+{
+    @await Component.InvokeAsync("Subscribe");
+}
+
 <!-- Subscribe End -->
 
 @section Scriptss{

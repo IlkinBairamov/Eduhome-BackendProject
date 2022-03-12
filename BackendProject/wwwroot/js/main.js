@@ -1,4 +1,18 @@
 $(document).ready(function () {
+    var personId = $("#personId").val();
+    $(document).on('click', '#mc-embedded-subscribe', function () {
+        $("#subDiv").empty();
+            $.ajax({
+                type: "GET",
+                url: "Subscribe/Subscribe?id=" + personId,
+                success: function (res) {
+                    $("#subDiv").append(res);
+                }
+            })
+    })
+});
+
+$(document).ready(function () {
     var searched;
     $(document).on('keyup', '#input-search', function () {
         searched = $(this).val();

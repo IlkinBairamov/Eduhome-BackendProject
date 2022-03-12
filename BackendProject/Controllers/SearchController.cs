@@ -18,11 +18,6 @@ namespace BackendProject.Controllers
             _dbContext = dbContext;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public async Task<IActionResult> Search(string searched)
         {
             var blogs = await _dbContext.Blogs

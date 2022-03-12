@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace BackendProject.Areas.AdminPanel.Controllers
@@ -102,6 +104,26 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
             await _dbContext.Events.AddAsync(eventViewModel.Event);
             await _dbContext.SaveChangesAsync();
+
+            var users = await _dbContext.Users.Where(x => x.Subscribe == true).ToListAsync();
+            MailMessage msg = new MailMessage();
+            msg.From = new MailAddress("codep320@gmail.com", "Eduhome");
+            foreach (var user in users)
+            {
+                msg.To.Add(user.Email);
+            }
+          
+            string body = string.Empty;
+            msg.Body = "New event created";
+            msg.Subject = "New Event";
+            msg.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("codep320@gmail.com", "codeacademyp320");
+            smtp.Send(msg);
 
             return RedirectToAction("Index");
         }

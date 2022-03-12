@@ -1,0 +1,12 @@
+﻿@model User
+@{
+    ViewData["Title"] = "_SubscribePatrial";
+}
+@if (Model.Subscribe == false)
+{
+    <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
+}
+else
+{
+    <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>Unsubscribe</span></button>
+}

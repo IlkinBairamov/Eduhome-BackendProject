@@ -44,7 +44,6 @@
                                 <ul>
                                     <li>
                                         <a asp-controller="Home" asp-action="Index">Home</a>
-                                      
                                     </li>
                                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                                     <li>
@@ -53,7 +52,6 @@
                                     </li>
                                     <li>
                                         <a asp-controller="Event" asp-action="Index">event</a>
-                                     
                                     </li>
                                     <li class="hidden-sm">
                                         <a asp-controller="Teacher" asp-action="Index">teacher</a>
@@ -61,7 +59,6 @@
                                     </li>
                                     <li>
                                         <a asp-controller="Blog" asp-action="Index">blog</a>
-                                     
                                     </li>
                                     <li><a asp-controller="Home" asp-action="Index">Contact</a></li>
                                     <li><a asp-controller="Home" asp-action="Index">Buy Now</a>
@@ -78,7 +75,10 @@
                             <div class="search">
                                 <div class="search-form">
                                     <form id="search-form" action="#">
-                                        <input type="search" placeholder="Search here..." name="search" />
+                                        <input id="input-search" type="search" placeholder="Search here..." name="search" />
+                                        <div id="new" style="background-color:white; width:231px; overflow:hidden">
+
+                                        </div>
                                         <button type="submit">
                                             <span><i class="fa fa-search"></i></span>
                                         </button>

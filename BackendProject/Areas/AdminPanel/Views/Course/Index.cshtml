@@ -1,4 +1,6 @@
-﻿@model List<Course>
+﻿@using FrontToBack.Data;
+@model List<Course>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -24,15 +26,28 @@
                                 <td>@item.Name</td>
 
                                 <td>
-                                    <a class="btn btn-warning" asp-controller="Course" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                    <a class="btn btn-success" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">Details</a>
-                                    <a class="btn btn-danger" asp-controller="Course" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    @if (User.IsInRole(RoleConstants.ModeratorRole))
+                                    {
+                                        <a class="btn btn-warning" asp-controller="Course" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-danger" asp-controller="Course" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-warning" asp-controller="Course" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-success" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                                        <a class="btn btn-danger" asp-controller="Course" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <a class="btn btn-warning mt-3" asp-controller="Course" asp-action="Create">Create Course</a>
+
+                @if (User.IsInRole(RoleConstants.AdminRole))
+                {
+                    <a class="btn btn-warning mt-3" asp-controller="Course" asp-action="Create">Create Course</a>
+                }
             </div>
         </div>
     </div>

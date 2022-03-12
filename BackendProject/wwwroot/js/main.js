@@ -1,4 +1,20 @@
 $(document).ready(function () {
+    var searched;
+    $(document).on('keyup', '#input-search', function () {
+        searched = $(this).val();
+        if (searched.length > 0) {
+            $.ajax({
+                type: "GET",
+                url: "Search/Search?searched=" + searched,
+                success: function (res) {
+                    $("#new").append(res);
+                }
+            })
+        }
+    })
+});
+
+$(document).ready(function () {
     var controller = $("#controller").val();
     var searched;
     $(document).on('keyup', '#input-search', function () {
@@ -17,7 +33,6 @@ $(document).ready(function () {
         else {
             $("#old").css("display", "block")
         }
-     
     })
 });
 

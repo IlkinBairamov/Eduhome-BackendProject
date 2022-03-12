@@ -4,6 +4,7 @@ using BackendProject.DataAccessLayer;
 using BackendProject.Models;
 using FrontToBack.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,22 +16,36 @@ using System.Threading.Tasks;
 namespace BackendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    [Authorize(Roles = RoleConstants.AdminRole)]
+    [Authorize(Roles = "Admin,Moderator")]
     public class CourseController : Controller
     {
         private readonly AppDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public CourseController(AppDbContext dbContext) 
+
+        public CourseController(AppDbContext dbContext, UserManager<User> userManager, RoleManager<IdentityRole> roleManager) 
         {
             _dbContext = dbContext;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
-
+        
         public async Task<IActionResult> Index()
         {
-            var courses = await _dbContext.Courses.Where(x => x.IsDeleted == false).ToListAsync();
+            var courses = new List<Course>();
+            if (User.IsInRole(RoleConstants.ModeratorRole))
+            {
+                var moderator = await _userManager.FindByNameAsync(User.Identity.Name);
+                courses = await _dbContext.Courses.Where(x => x.IsDeleted == false && x.UserId==moderator.Id).ToListAsync();
+                return View(courses);
+
+            }
+           
+          courses = await _dbContext.Courses.Where(x => x.IsDeleted == false).ToListAsync();
             return View(courses);
         }
-
+        [Authorize(RoleConstants.AdminRole)]
         public async Task<IActionResult> Create()
         {
             var Categories = await _dbContext.Categories
@@ -95,6 +110,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
             return RedirectToAction("Index");
         }
 
+       
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,7 +160,7 @@ namespace BackendProject.Areas.AdminPanel.Controllers
 
             return View(course);
         }
-
+       
         public async Task<IActionResult> Update(int? id)
         {
             var Categories = await _dbContext.Categories

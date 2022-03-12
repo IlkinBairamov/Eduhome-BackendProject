@@ -1,9 +1,11 @@
-﻿using BackendProject.Models;
+﻿using BackendProject.DataAccessLayer;
+using BackendProject.Models;
 using BackendProject.ViewModels;
 using FrontToBack.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +17,15 @@ namespace BackendProject.Areas.AdminPanel.Controllers
     [Authorize(Roles = RoleConstants.AdminRole)]
     public class UserController : Controller
     {
+        private readonly AppDbContext _dbContext;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, AppDbContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _dbContext = dbContext;
         }
 
         public async Task<IActionResult> Index()
@@ -82,15 +86,16 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 return BadRequest();
             }
             ViewBag.CurrentRole = role;
-
+            ViewBag.CurrentCourse =await _dbContext.Courses.Where(x=>x.IsDeleted==false && x.UserId==null || x.UserId==id).ToListAsync();
             var roles = _roleManager.Roles.ToList();
             return View(roles);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangeRole(string id, string newRole)
+        public async Task<IActionResult> ChangeRole(string id, string newRole,List<int?> courseIds)
         {
+            ViewBag.CurrentCourse = await _dbContext.Courses.Where(x => x.IsDeleted == false && x.UserId == null || x.UserId == id).ToListAsync();
             if (id == null && newRole == null)
             {
                 return BadRequest();
@@ -121,6 +126,25 @@ namespace BackendProject.Areas.AdminPanel.Controllers
                 }
                 await _userManager.UpdateAsync(user);
 
+            }
+            if (newRole==RoleConstants.ModeratorRole)
+            {
+                if (courseIds != null)
+                {
+                    var courses = _dbContext.Courses.Where(x=>x.IsDeleted==false && x.UserId==id).ToList();
+                    foreach (var course in courses)
+                    {
+                        user.Courses.Remove(course);
+                    }
+                    _dbContext.SaveChanges();
+                }
+              
+                foreach (var Id in courseIds)
+                {
+                    var courses = _dbContext.Courses.FirstOrDefault(x=>x.Id == Id);
+                    courses.UserId = id;
+                }
+                _dbContext.SaveChanges();
             }
 
             return RedirectToAction(nameof(Index));

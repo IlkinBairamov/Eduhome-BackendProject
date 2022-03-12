@@ -1,0 +1,92 @@
+﻿@model SearchViewModel
+
+
+    @* ------ Blog ------ *@
+
+    <div class="single-blog-widget mb-50">
+        <h4 style="text-align:center; margin-bottom:10px">Blogs</h4>
+        @foreach (var item in Model.Blogs)
+        {
+            <div class="single-post mb-30">
+                <div class="single-post-img">
+                    <a asp-controller="Blog" asp-action="Detail">
+                        <img src="~/img/blog/@item.Image" style="width:95px" alt="post">
+                        <div class="blog-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="single-post-content">
+                    <h4 ><a style="margin-right:7px"  asp-controller="Blog" asp-action="Detail">@item.Name</a></h4>
+                    
+                </div>
+            </div>
+        }
+    </div>
+
+    @* ------ Event ------ *@
+
+    <div class="single-blog-widget mb-50">
+        <h4 style="text-align:center; margin-bottom:10px">Events</h4>
+        @foreach (var item in Model.Events)
+        {
+            <div class="single-post mb-30">
+                <div class="single-post-img">
+                    <a asp-controller="Event" asp-action="Detail">
+                        <img src="~/img/event/@item.Image" style="width:95px" alt="post">
+                        <div class="blog-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="single-post-content">
+                    <h4 style="margin-right:7px"><a asp-controller="Event" asp-action="Detail">@item.Title</a></h4>
+                    
+                </div>
+            </div>
+        }
+    </div>
+
+    @* ------ Teacher ------ *@
+
+    <div class="single-blog-widget mb-50">
+        <h4 style="text-align:center; margin-bottom:10px">Teachers</h4>
+        @foreach (var item in Model.Teachers)
+        {
+            <div class="single-post mb-30">
+                <div class="single-post-img">
+                    <a asp-controller="Teacher" asp-action="Detail">
+                        <img src="~/img/teacher/@item.Image" style="width:95px" alt="post">
+                        <div class="blog-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="single-post-content">
+                    <h4 style="margin-right:15px"><a asp-controller="Teacher" asp-action="Detail">@item.Fullanme</a></h4>
+                </div>
+            </div>
+        }
+    </div>
+
+    @* ------ Course ------ *@
+    <div class="single-blog-widget mb-50">
+        <h4 style="text-align:center; margin-bottom:10px">Course</h4>
+        @foreach (var item in Model.Courses)
+        {
+            <div class="single-post mb-30">
+                <div class="single-post-img">
+                    <a asp-controller="Course" asp-action="Detail">
+                        <img src="~/img/course/@item.Image" style="width:95px" alt="post">
+                        <div class="blog-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="single-post-content">
+                    <h4 style="margin-right:7px"><a asp-controller="Course" asp-action="Detail">@item.Name</a></h4>
+                </div>
+            </div>
+        }
+    </div>
+

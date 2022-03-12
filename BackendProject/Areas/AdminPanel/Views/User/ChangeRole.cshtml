@@ -20,7 +20,47 @@
         }
     </select>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="mt-3">
+        @if (ViewBag.CurrentRole == "Moderator")
+        {
+            <select class="form-select" multiple aria-label="multiple select example" name="courseIds" id="courseIds">
+                @foreach (var course in ViewBag.CurrentCourse)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </select>
+        }
+        else
+        {
+            <select class="form-select" disabled name="courseIds" id="courseIds">
+                @foreach (var course in ViewBag.CurrentCourse)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </select>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
 
+
+@section Scripts{ 
+
+<script>
+    $(document).ready(function () {
+        $("#newRole").change(function () {
+            var role = $(this).val();
+            if (role === "Moderator") {
+                $("#courseIds").removeAttr("disabled");
+            }
+            else {
+                $("#courseIds").attr("disabled",true);
+            }
+       
+        })
+    })
+</script>
+
+}
 

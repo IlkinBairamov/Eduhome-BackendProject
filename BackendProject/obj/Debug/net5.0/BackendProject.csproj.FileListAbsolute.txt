@@ -206,3 +206,4 @@ C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Areas
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchedEventPartial.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchedBlogPartial.cshtml.g.cs
 C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_SearchedTeacherPartial.cshtml.g.cs
+C:\Users\ACER\Desktop\BackendProject\BackendProject\obj\Debug\net5.0\Razor\Views\Shared\_GlobalSearch.cshtml.g.cs

@@ -21,7 +21,7 @@ namespace BackendProject.Controllers
         }
         public IActionResult Index()
         {
-            var events = _dbContext.Events.ToList();
+            var events = _dbContext.Events.Where(x=>x.IsDeleted==false).ToList();
             return View(events);
         }
 

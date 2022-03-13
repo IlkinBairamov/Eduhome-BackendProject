@@ -20,9 +20,12 @@ namespace BackendProject.Controllers
             _dbContext = dbContext;
             _logger = logger;
         }
-        public async Task<IActionResult>  Index()
+        public async Task<IActionResult>  Index(int page = 1)
         {
-            var blogs = await _dbContext.Blogs.ToListAsync();
+            ViewBag.TotalPage = Math.Ceiling((decimal)_dbContext.Blogs.Count() / 9);
+            ViewBag.CurrentPage = page;
+
+            var blogs = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).Skip((page - 1) * 9).Take(9).ToListAsync();
             return View(blogs);
         }
         public async Task<IActionResult> Detail(int? id)

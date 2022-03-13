@@ -58,19 +58,19 @@
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teacher" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teacher" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teacher" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                     @Html.Raw(about.Title)
                     <p>@about.Subtitle</p>
                     <p class="hidden-sm">@about.Subtitle2</p>
-                    <a class="default-btn" href="about.html">view courses</a>
+                    <a class="default-btn" asp-controller="Course" asp-action="Index">view courses</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -116,7 +116,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-course">
                         <div class="course-img">
-                            <a href="course-details.html">
+                            <a asp-controller="Course" asp-action="Detail">
                                 <img src="img/course/@course.Image" alt="course">
                                 <div class="course-hover">
                                     <i class="fa fa-link"></i>
@@ -127,7 +127,7 @@
                             <h3><a href="course-details.html">@course.Name</a></h3>
                             <div class="mb-20" style="height:72px ; overflow:hidden">  <p>@course.Text</p>  </div>
 
-                            <a class="default-btn" href="course-details.html">read more</a>
+                            <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="Id">read more</a>
                         </div>
                     </div>
                 </div>
@@ -194,17 +194,17 @@
                 {
                     <div class="single-event mb-35">
                         <div class="event-img">
-                            <a href="event-details.html"><img src="img/event/event1.jpg" alt="event"></a>
+                            <a asp-controller="Event" asp-action="Detail"><img src="img/event/event1.jpg" alt="event"></a>
                         </div>
                         <div class="event-content text-left">
                             <h3>@item.Created.ToString("dd/MM/yyyy")</h3>
-                            <h4><a href="event-details.html">ADVANCE PHP WORKSHOP</a></h4>
+                            <h4><a asp-controller="Event" asp-action="Detail">ADVANCE PHP WORKSHOP</a></h4>
                             <ul>
                                 <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
                                 <li><i class="fa fa-map-marker"></i>@item.Location</li>
                             </ul>
                             <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">join now</a>
+                                <a class="default-btn" asp-controller="Event" asp-action="Detail">join now</a>
                             </div>
                         </div>
                     </div>
@@ -261,9 +261,9 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-blog">
                         <div class="blog-img">
-                            <a href="blog-details.html"><img src="~/img/blog/@item.Image" alt="blog"></a>
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="id"><img src="~/img/blog/@item.Image" alt="blog"></a>
                             <div class="blog-hover">
-                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                                <a asp-controller="Blog" asp-action="Detail"  asp-route-id="id"><i class="fa fa-link"></i></a>
                             </div>
                         </div>
                         <div class="blog-content">
@@ -271,8 +271,8 @@
                                 <p>by @item.Name / @item.Created.ToString("dd/MM/yyyy")  /  <i class="fa fa-comments-o"></i> 4</p>
                             </div>
                             <div class="blog-bottom">
-                                <h2><a href="blog-details.html">@item.Title </a></h2>
-                                <a href="blog-details.html">read more</a>
+                                <h2><a asp-controller="Blog" asp-action="Detail"  asp-route-id="id">@item.Title </a></h2>
+                                <a asp-controller="Blog" asp-action="Detail"  asp-route-id="id">read more</a>
                             </div>
                         </div>
                     </div>

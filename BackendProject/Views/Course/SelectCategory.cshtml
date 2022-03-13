@@ -4,21 +4,7 @@
 }
 
 <!-- Banner Area Start -->
-<div class="banner-area-wrapper">
-    <div class="banner-area text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="banner-content-wrapper">
-                        <div class="banner-content">
-                            <h2>courses</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("Bunner");
 <!-- Banner Area End -->
 <!-- Course Start -->
 <div class="course-area pt-150 pb-150">
@@ -50,7 +36,7 @@
                             </a>
                         </div>
                         <div class="course-content">
-                            <h3><a href="course-details.html">@item.Name</a></h3>
+                            <h3><a asp-action="Detail">@item.Name</a></h3>
                             <div class="mb-6" style="height:72px ; overflow:hidden">
                                 <p>@item.Text</p>
                             </div>

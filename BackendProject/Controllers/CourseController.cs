@@ -21,7 +21,7 @@ namespace BackendProject.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var courses = await _dbContext.Courses.ToListAsync();
+            var courses = await _dbContext.Courses.Where(x=>x.IsDeleted==false).ToListAsync();
             return View(courses);
         }
 

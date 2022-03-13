@@ -5,21 +5,7 @@
 }
 
 <!-- Banner Area Start -->
-<div class="banner-area-wrapper">
-    <div class="banner-area text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="banner-content-wrapper">
-                        <div class="banner-content">
-                            <h2>blog</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("Bunner");
 <!-- Banner Area End -->
 <!-- Blog Start -->
 <div class="blog-area pt-50 pb-150">
@@ -54,7 +40,7 @@
                                 <p>@item.Name/@item.Created.ToString("dd/MM/yyyy") /  <i class="fa fa-comments-o"></i> 4</p>
                             </div>
                             <div class="blog-bottom">
-                                <h2><a href="blog-details.html">@item.Name </a></h2>
+                                <h2><a asp-action="Detail">@item.Name </a></h2>
                                 <a asp-action="Detail">read more</a>
                             </div>
                         </div>

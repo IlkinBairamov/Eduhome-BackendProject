@@ -30,10 +30,10 @@ namespace BackendProject.Controllers
             var noticeList = await _dbContext.NoticeList.ToListAsync();
             var testimonialsList = await _dbContext.testimonials.ToListAsync();
             var subscribe = await _dbContext.subscribes.SingleOrDefaultAsync();
-            var course = await _dbContext.Courses.Take(3).ToListAsync();
+            var course = await _dbContext.Courses.Where(x=>x.IsDeleted==false).Take(3).ToListAsync();
             var courseTitle = await _dbContext.CourseTitles.SingleOrDefaultAsync();
-            var events = await _dbContext.Events.Take(4).ToListAsync();
-            var blogs = await _dbContext.Blogs.Take(3).ToListAsync();
+            var events = await _dbContext.Events.Where(x=>x.IsDeleted==false).Take(4).ToListAsync();
+            var blogs = await _dbContext.Blogs.Where(x=>x.IsDeleted==false).Take(3).ToListAsync();
 
             return View(new HomeViewModel
             {

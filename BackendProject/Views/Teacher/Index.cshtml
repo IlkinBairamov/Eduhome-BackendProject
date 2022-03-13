@@ -5,23 +5,8 @@
 }
 
 <!-- Banner Area Start -->
-<div class="banner-area-wrapper">
-    <div class="banner-area text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="banner-content-wrapper">
-                        <div class="banner-content">
-                            <h2>our teachers</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("Bunner");
 <!-- Banner Area End -->
-
 <!-- Teacher Start -->
 <div class="teacher-area pt-50 pb-105">
     <div class="container">
@@ -49,7 +34,7 @@
                                 <a asp-action="Detail"><img src="img/teacher/@item.Image" alt="teacher"></a>
                             </div>
                             <div class="single-teacher-content text-center">
-                                <h2><a href="teacher-details.html">@item.Fullanme</a></h2>
+                                <h2><a asp-action="Detail">@item.Fullanme</a></h2>
                                 <h4>@item.Position</h4>
                                 <ul>
                                     <li><a href="@item.FacebookUrl"><i class="zmdi zmdi-facebook"></i></a></li>
@@ -66,7 +51,7 @@
 
             </div>
         </div>
-        </div>
+    </div>
 </div>
 <!-- Teacher End -->
 <!-- Subscribe Start -->

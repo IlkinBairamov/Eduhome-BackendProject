@@ -24,7 +24,7 @@
         </div>
         <div class="single-blog-widget mb-50">
             <div class="single-blog-banner">
-                <a href="blog-details.html" id="blog"><img src="~/img/blog/blog-img.jpg"  alt="blog"></a>
+                <a href="#" id="blog"><img src="~/img/blog/blog-img.jpg"  alt="blog"></a>
                 <h2>best<br> eductaion<br> theme</h2>
             </div>
         </div>
@@ -34,7 +34,7 @@
             {
                 <div class="single-post mb-30">
                     <div class="single-post-img">
-                        <a href="blog-details.html">
+                        <a asp-action="Detail">
                             <img src="~/img/blog/@item.Image"style="width:95px" alt="post">
                             <div class="blog-hover">
                                 <i class="fa fa-link"></i>
@@ -42,19 +42,18 @@
                         </a>
                     </div>
                     <div class="single-post-content">
-                        <h4><a href="blog-details.html">@item.Name</a></h4>
+                        <h4><a asp-action="Detail">@item.Name</a></h4>
                         <p>by Alex  /  @String.Format("{0:MM/dd/yyyy}", item.Created)</p>
                     </div>
                 </div>
             }
-
         </div>
         <div class="single-blog-widget">
             <h3>tags</h3>
             <div class="single-tag">
                 @foreach (var item in Model.Tags)
                 {
-                    <a href="blog-details.html" class="mr-10 mb-10">@item.Name</a>
+                    <a asp-action="Detail" class="mr-10 mb-10">@item.Name</a>
                 }
             </div>
         </div>
